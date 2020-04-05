@@ -1,7 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Edit = () => {
-  return <h1>Edit todo</h1>;
+const Edit = ({ todo }) => {
+  const [description, setDescription] = useState(todo.description);
+
+  const change = (e) => {
+    setDescription(e.target.value);
+  };
+
+  const reset = () => {
+    setDescription(todo.description);
+  };
+
+  const edit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const body = { description };
+      await fetch(`http://localhost:5000/todos/${todo.todo_id}`, {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      window.location = "/";
+    } catch (error) {
+      console.log(`Something went wrong: ${error}`);
+    }
+  };
+
+  return (
+    <>
+      <button
+        type="button"
+        className="btn btn-warning"
+        data-toggle="modal"
+        data-target={`#id${todo.todo_id}`}
+      >
+        Edit
+      </button>
+      <div className="modal" id={`id${todo.todo_id}`}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Task Edit</h4>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                onClick={reset}
+              >
+                &times;
+              </button>
+            </div>
+
+            <div className="modal-body">
+              <input
+                className="form-control"
+                type="text"
+                value={description}
+                onChange={change}
+              />
+            </div>
+
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-warning"
+                data-dismiss="modal"
+                onClick={(e) => edit(e)}
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Edit;

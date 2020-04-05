@@ -17,7 +17,7 @@ const Input = () => {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(body),
       });
-      console.log(response);
+      window.location("/");
     } catch (error) {
       console.log(`Something went wrong: ${error}`);
     }

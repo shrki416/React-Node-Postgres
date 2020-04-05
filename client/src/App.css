@@ -1,7 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap");
+
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: #374954;
+  color: #009432;
+  height: 100%;
+}
+
+.table {
+  color: #009432;
+  font-family: "Comic Neue", cursive;
+}
+
+.jumbotron {
+  background-color: #374954;
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+}
+
+.btn,
+.btn-primary {
+  background-color: #009432;
+  color: #000;
 }

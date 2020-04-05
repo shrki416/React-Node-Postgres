@@ -25,15 +25,14 @@ const Input = () => {
 
   return (
     <>
-      <h1 className="mt-5 text-center">todo list</h1>
       <form className="d-flex mt-4" onSubmit={submit}>
         <input
-          className="form-control"
+          className="form-control mr-2"
           type="text"
           value={description}
           onChange={change}
         />
-        <button className="btn btn-primary">Add</button>
+        <button className="btn btn-success">Add</button>
       </form>
     </>
   );

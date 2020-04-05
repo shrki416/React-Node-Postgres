@@ -30,7 +30,7 @@ const List = () => {
   };
 
   const displayTodos = todos.map((todo) => (
-    <tr key={todo.todo_id}>
+    <tr className="table-secondary" key={todo.todo_id}>
       <td>{todo.description}</td>
       <td>
         <Edit todo={todo} />
@@ -49,7 +49,7 @@ const List = () => {
   return (
     <>
       <table className="table mt-3 text-center">
-        <thead>
+        <thead className="thead-dark">
           <tr>
             <th>Task</th>
             <th>Edit</th>

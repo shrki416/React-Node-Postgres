@@ -12,12 +12,12 @@ const Input = () => {
     try {
       const body = { description };
       const url = "http://localhost:5000/todos";
-      const response = await fetch(url, {
+      await fetch(url, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(body),
       });
-      window.location("/");
+      window.location = "/";
     } catch (error) {
       console.log(`Something went wrong: ${error}`);
     }
